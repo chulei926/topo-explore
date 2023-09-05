@@ -43,7 +43,7 @@ const genLine = (nodes1: [], nodes2: [], arrow: boolean = false) => {
                     source: node1.id, // 起始点 id
                     target: node2.id, // 目标点 id
                     type: 'line',
-                    label: '+3',
+                    // label: '+3',
                     labelCfg: extendBoxLabelEdgeCfg.labelCfg
                 });
             }

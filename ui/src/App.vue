@@ -14,11 +14,13 @@ import defaultNodeStateStyles from "./config/DefaultNodeStateStyles";
 import multipleLabelsEdge from './config/ExtendMultipleLabelsEdge'
 import {edgeEventListenerStart} from "./config/EdgeEventListener";
 import defaultComboCfg from "./config/DefaultComboConfig";
+import ExtendBorderImageNode from "./config/ExtendBorderImageNode";
 
 customEventEdge.init();
 multipleLabelsEdge.init();
+ExtendBorderImageNode.init();
 
-const globalGraph:any = ref(null);
+const globalGraph: any = ref(null);
 
 nextTick(() => {
 	// let muiltLines: any = [];
@@ -33,7 +35,7 @@ nextTick(() => {
 	// const grid = new G6.Grid();
 	// const minimap = new G6.Minimap();
 	const toolbar = new G6.ToolBar({
-		position: { x: 10, y: 10 },
+		position: {x: 10, y: 10},
 	});
 
 	const w: number = document.body.clientWidth - 10;
@@ -47,11 +49,14 @@ nextTick(() => {
 		defaultNode: defaultNodeCfg,
 		defaultEdge: defaultEdgeCfg,
 		modes: {
-			default: ['drag-svg', 'drag-node'],
+			default: ['zoom-canvas', 'drag-canvas', 'drag-node', 'click-select', 'brush-select', 'hover-node'],
+			custom: ['click-node', 'click-canvas']
 		},
 		nodeStateStyles: defaultNodeStateStyles,
 		defaultCombo: defaultComboCfg,
 		plugins: [toolbar], // 配置 Grid 插件和 Minimap 插件
+		minZoom: 0.5,
+		maxZoom: 1.5,
 	});
 	edgeEventListenerStart(graph);
 
